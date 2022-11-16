@@ -7,7 +7,7 @@ export function Router() {
     <Routes>
       <Route path="/" element={<DefaultLayout />}>
         <Route path="/" element={<HomePage />} />
-        <Route path="/complete" element={<CompleteOrder />} />
+        <Route path="/completeorder" element={<CompleteOrder />} />
       </Route>
     </Routes>
   )
