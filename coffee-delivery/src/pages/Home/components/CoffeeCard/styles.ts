@@ -59,14 +59,38 @@ export const CardFooter = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 
   > div {
     display: flex;
     align-items: center;
+
     gap: 3px;
     p {
       line-height: 0.75rem;
+    }
+  }
+`
+
+export const AddCardWrapper = styled.div`
+  width: 7.5rem;
+
+  > button {
+    width: 2.375rem;
+    height: 2.375rem;
+    border: none;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: ${({ theme }) => theme.colors['brand-purple-dark']};
+    color: ${({ theme }) => theme.colors['base-card']};
+    border-radius: 4px;
+    margin-left: 0.3rem;
+    transition: 0.4s;
+
+    &:hover {
+      background-color: ${({ theme }) => theme.colors['brand-purple']};
     }
   }
 `
