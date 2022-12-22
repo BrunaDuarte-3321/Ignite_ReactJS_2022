@@ -4,6 +4,8 @@ import { CompleteOrderContainer } from './styles'
 import * as zod from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm, FormProvider } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
+import { useCart } from '../../hooks/useCart'
 
 // eslint-disable-next-line no-unused-vars
 enum PaymentMethods {
@@ -27,18 +29,24 @@ const confirmOrderFormValidationSchema = zod.object({
   }),
 })
 
-type OrderData = zod.infer<typeof confirmOrderFormValidationSchema>
+export type OrderData = zod.infer<typeof confirmOrderFormValidationSchema>
 type ConfirmOrderData = OrderData
 
 export function CompleteOrder() {
+  const navigate = useNavigate()
   const confirmOrderForm = useForm<ConfirmOrderData>({
     resolver: zodResolver(confirmOrderFormValidationSchema),
   })
 
   const { handleSubmit } = confirmOrderForm
 
+  const { cleanCart } = useCart()
+
   const handleConfirmOrder = (data: ConfirmOrderData) => {
-    console.log(data, 'data')
+    navigate('/orderConfirmed', {
+      state: data,
+    })
+    cleanCart()
   }
   return (
     <FormProvider {...confirmOrderForm}>

@@ -10,6 +10,7 @@ interface CartContextType {
   cartItems: CartItem[]
   cartQuantity: number
   cartItemsTotal: number
+  cleanCart: () => void
   addCoffeeToCart: (coffee: CartItem) => void
   changeCartItemQuantity: (
     cartItemId: number,
@@ -26,7 +27,13 @@ const COFFEE_ITEMS_STORAGE_KEY = 'coffee-delivery:cartItems'
 export const CartContext = createContext({} as CartContextType)
 
 export function CartContextProvider({ children }: CartContextProviderProps) {
-  const [cartItems, setCartItems] = useState<CartItem[]>([])
+  const [cartItems, setCartItems] = useState<CartItem[]>(() => {
+    const storedCartItems = localStorage.getItem(COFFEE_ITEMS_STORAGE_KEY)
+    if (storedCartItems) {
+      return JSON.parse(storedCartItems)
+    }
+    return []
+  })
 
   const cartQuantity = cartItems.length
 
@@ -77,6 +84,10 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     setCartItems(newCart)
   }
 
+  function cleanCart() {
+    setCartItems([])
+  }
+
   useEffect(() => {
     localStorage.setItem(COFFEE_ITEMS_STORAGE_KEY, JSON.stringify(cartItems))
   }, [cartItems])
@@ -89,6 +100,7 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
         changeCartItemQuantity,
         removeCartItem,
         cartItemsTotal,
+        cleanCart,
       }}
     >
       {children}
