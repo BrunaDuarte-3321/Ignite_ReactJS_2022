@@ -18,7 +18,6 @@ export function AdressForm() {
     <AdressFormContainer>
       <Input
         placeholder="CEP"
-        type="number"
         className="cep"
         {...register('cep')}
         error={errors.cep?.message}
@@ -31,9 +30,8 @@ export function AdressForm() {
       />
       <Input
         placeholder="Número"
-        type="number"
-        {...register('street')}
-        error={errors.street?.message}
+        {...register('number')}
+        error={errors.number?.message}
       />
       <Input
         placeholder="Complemento"
