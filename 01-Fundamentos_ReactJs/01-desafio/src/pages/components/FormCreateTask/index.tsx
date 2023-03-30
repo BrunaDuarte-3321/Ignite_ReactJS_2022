@@ -52,6 +52,7 @@ export const FormCreateTask = () => {
     <FormCreateTaskContainer className="container">
       <form action="" onSubmit={handleCreateNewTask}>
         <input
+          required
           type="text"
           value={newTask}
           onChange={handleNewTaskText}

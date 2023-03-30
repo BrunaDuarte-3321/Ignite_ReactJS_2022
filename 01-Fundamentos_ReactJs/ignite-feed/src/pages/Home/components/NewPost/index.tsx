@@ -3,26 +3,23 @@ import { useNavigate } from 'react-router-dom'
 import { usePost } from '../../../../hooks/usePost'
 import { NewPostContainer, NewPostContent } from './styles'
 
-interface PropsNewPost {
-  author: {
-    avatarUrl: string
-    name: string
-    role: string
-  }
-  content: [
-    {
-      type: 'paraghraph' | 'link'
-      content: string
-    },
-  ]
+interface AuthorProps {
+  avatarUrl: string
+  name: string
+  role: string
+}
+
+interface PropsPost {
+  author: AuthorProps
+  content: string
   publishedAt: string
 }
 export function NewPost() {
   const { newDataPost } = usePost()
-  const { register, handleSubmit, reset } = useForm<PropsNewPost>()
+  const { register, handleSubmit, reset } = useForm<PropsPost>()
   const navigate = useNavigate()
 
-  const handleNewPost: SubmitHandler<PropsNewPost> = ({
+  const handleNewPost: SubmitHandler<PropsPost> = ({
     author,
     content,
     publishedAt,
@@ -65,8 +62,10 @@ export function NewPost() {
             placeholder="data"
             {...register('publishedAt')}
             className="date"
+            required
           />
           <textarea
+            required
             placeholder="Post"
             {...register('content')}
             className="post"

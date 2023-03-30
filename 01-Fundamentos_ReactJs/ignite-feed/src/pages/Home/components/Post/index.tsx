@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { InvalidEvent, useEffect, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { Avatar } from '../../../../components/Avatar'
 import { Comment } from '../Comment'
@@ -6,18 +6,15 @@ import { Author, PostContainer, PostContent, PostForm } from './styles'
 import { format, parseISO } from 'date-fns'
 import ptBR from 'date-fns/locale/pt-BR'
 
+interface AuthorProps {
+  avatarUrl: string
+  name: string
+  role: string
+}
+
 interface PropsPost {
-  author: {
-    avatarUrl: string
-    name: string
-    role: string
-  }
-  content: [
-    {
-      type: 'paraghraph' | 'link'
-      content: string
-    },
-  ]
+  author: AuthorProps
+  content: string
   publishedAt: string
 }
 interface PropsForm {
@@ -39,11 +36,14 @@ export function Post({ author, content, publishedAt }: PropsPost) {
     reset()
   }
 
+  function handleNewCommentInvalid(event: InvalidEvent<HTMLTextAreaElement>) {
+    event.target.setCustomValidity('Esse campo é obrigatório!')
+  }
+
   const deleteOneWithComment = (comment: string) => {
     const newComments = comments.filter((item) => {
       return item !== comment
     })
-
     setComments(newComments)
   }
 
@@ -68,7 +68,7 @@ export function Post({ author, content, publishedAt }: PropsPost) {
         </time>
       </header>
       <PostContent>
-        <p>conteudo do post </p>
+        <p>{content}</p>
         {/* <p>
               É um projeto que fiz no NLW Return, evento da Rocketseat. O nome
               do projeto é DoctorCare 🚀
@@ -86,7 +86,12 @@ export function Post({ author, content, publishedAt }: PropsPost) {
       </PostContent>
       <PostForm onSubmit={handleSubmit(handleComment)}>
         <h3>Deixe seu feedback</h3>
-        <textarea placeholder="Deixe um comentário" {...register('comment')} />
+        <textarea
+          onInvalid={handleNewCommentInvalid}
+          placeholder="Deixe um comentário"
+          {...register('comment')}
+          required
+        />
         <footer>
           <button type="submit">Comentar</button>
         </footer>
