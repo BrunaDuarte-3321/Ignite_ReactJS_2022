@@ -5,6 +5,7 @@ export const StyleGlobal = createGlobalStyle`
 :focus{
   outline: transparent;
   box-shadow: 0 0 0 2px ${({ theme }) => theme.colors['green-500']};
+  
 }
 
 *{
