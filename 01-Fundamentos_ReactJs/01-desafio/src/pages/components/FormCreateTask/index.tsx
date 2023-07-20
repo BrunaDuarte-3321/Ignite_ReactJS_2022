@@ -1,5 +1,5 @@
 import { PlusCircle, ClipboardText } from 'phosphor-react'
-import { ChangeEvent, FormEvent, useState } from 'react'
+import { ChangeEvent, FormEvent, useReducer, useState } from 'react'
 import { Task } from '../Tasks'
 import {
   AccountContainer,
@@ -8,10 +8,11 @@ import {
   NoTaskContainer,
   NoTaskContentContainer,
 } from './styles'
+import { taskReducer } from '../../../reducers/taskList'
 
 export const FormCreateTask = () => {
+  const [tasks, dispatch] = useReducer(taskReducer, [])
   const [newTask, setNewTask] = useState<string>('')
-  const [tasks, setTasks] = useState<string[]>([])
   const [accountNewTask, setAccountNewTask] = useState<number>(0)
   const [accountFinishedTask, setAccountFinishedTask] = useState<number>(0)
 
@@ -22,17 +23,20 @@ export const FormCreateTask = () => {
 
   const handleCreateNewTask = (event: FormEvent) => {
     event.preventDefault()
-    setTasks([...tasks, newTask])
+    dispatch({
+      type: 'createTask',
+      payload: { id: tasks.length, title: newTask },
+    })
     setNewTask('')
     setAccountNewTask(tasks.length + 1)
   }
 
-  const deletContentTask = (contetTask: string) => {
-    const deletWithoutTaskOne = tasks.filter((deletTask) => {
-      return deletTask !== contetTask
+  const deletContentTask = (id: number) => {
+    dispatch({
+      type: 'deleteTask',
+      payload: { id },
     })
 
-    setTasks(deletWithoutTaskOne)
     setAccountNewTask(tasks.length - 1)
     accountFinishedTask === 0
       ? setAccountFinishedTask(0)
@@ -46,7 +50,6 @@ export const FormCreateTask = () => {
       setAccountFinishedTask(accountFinishedTask - 1)
     }
   }
-  /* const isSubmitDisabled = !task */
 
   return (
     <FormCreateTaskContainer className="container">
@@ -83,7 +86,7 @@ export const FormCreateTask = () => {
           return (
             <Task
               handleAccountFinished={handleAccountFinished}
-              key={item}
+              key={item.id}
               task={item}
               deletContentTask={deletContentTask}
             />

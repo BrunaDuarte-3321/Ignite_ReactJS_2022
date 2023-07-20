@@ -6,10 +6,11 @@ import {
   TasksContainer,
   TrashContainer,
 } from './styles'
+import { ITasks } from '../../../reducers/taskList'
 
 interface PropsCreatetasks {
-  task: string
-  deletContentTask: (contentDelet: string) => void
+  task: ITasks
+  deletContentTask: (contentDelet: number) => void
   handleAccountFinished: (finished: boolean) => void
 }
 
@@ -20,9 +21,9 @@ export const Task = ({
 }: PropsCreatetasks) => {
   const [finish, setFinish] = useState<boolean>(false)
 
-  const handleDeletTask = () => {
+  const handleDeletTask = (id: number) => {
     console.log('cliquei')
-    deletContentTask(task)
+    deletContentTask(id)
   }
 
   const validateTask = () => {
@@ -41,11 +42,11 @@ export const Task = ({
           </div>
         )}
         <ContentContainer className={`${finish ? 'finishedTask' : null} `}>
-          {task}
+          {task.title}
         </ContentContainer>
       </BoxTaskContainer>
       <TrashContainer>
-        <Trash size={17.45} onClick={handleDeletTask} />
+        <Trash size={17.45} onClick={() => handleDeletTask(task.id)} />
       </TrashContainer>
     </TasksContainer>
   )
