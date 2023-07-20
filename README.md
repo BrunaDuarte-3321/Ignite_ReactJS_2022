@@ -10,7 +10,7 @@ Nos projetos desenvolvidos, foram aplicados os seguintes conceitos:
 - Comunicação entre componentes atraves das propriedades;
 - hook useState, useEffect, Context, hooks customizados;
 - Gerenciamento de estado com os Hooks useState e useEffect;
-- Uso do TypeScript e seus beneficios;
+- Uso do TypeScript e seus beneficios
  
 
 <!-- **Linguagens e ferramentas:**
