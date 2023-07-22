@@ -3,6 +3,7 @@ type CreateTask = {
   payload: {
     id: number
     title: string
+    finished: boolean
   }
 }
 type DeleteTask = {
@@ -11,5 +12,13 @@ type DeleteTask = {
     id: number
   }
 }
+
+/* type FinishedTask = {
+  type: 'finishedTask'
+  payload: {
+    finished: boolean
+    completedTask: number
+  }
+} */
 
 export type ActionsTask = CreateTask | DeleteTask

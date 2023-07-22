@@ -1,5 +1,6 @@
+import { useReducer, useState } from 'react'
+import { useForm, SubmitHandler } from 'react-hook-form'
 import { PlusCircle, ClipboardText } from 'phosphor-react'
-import { ChangeEvent, FormEvent, useReducer, useState } from 'react'
 import { Task } from '../Tasks'
 import {
   AccountContainer,
@@ -8,26 +9,20 @@ import {
   NoTaskContainer,
   NoTaskContentContainer,
 } from './styles'
-import { taskReducer } from '../../../reducers/taskList'
+import { ITasks, taskReducer } from '../../../reducers/taskList'
 
 export const FormCreateTask = () => {
+  const { register, handleSubmit, reset } = useForm<ITasks>()
   const [tasks, dispatch] = useReducer(taskReducer, [])
-  const [newTask, setNewTask] = useState<string>('')
   const [accountNewTask, setAccountNewTask] = useState<number>(0)
   const [accountFinishedTask, setAccountFinishedTask] = useState<number>(0)
 
-  const handleNewTaskText = (event: ChangeEvent<HTMLInputElement>) => {
-    event.target.setCustomValidity('')
-    setNewTask(event.target.value)
-  }
-
-  const handleCreateNewTask = (event: FormEvent) => {
-    event.preventDefault()
+  const handleCreateTask: SubmitHandler<ITasks> = ({ id, title, finished }) => {
     dispatch({
       type: 'createTask',
-      payload: { id: tasks.length, title: newTask },
+      payload: { id, title, finished: false },
     })
-    setNewTask('')
+    reset()
     setAccountNewTask(tasks.length + 1)
   }
 
@@ -50,15 +45,14 @@ export const FormCreateTask = () => {
       setAccountFinishedTask(accountFinishedTask - 1)
     }
   }
-
+  console.log(tasks, ' tasks')
   return (
     <FormCreateTaskContainer className="container">
-      <form action="" onSubmit={handleCreateNewTask}>
+      <form action="" onSubmit={handleSubmit(handleCreateTask)}>
         <input
           required
           type="text"
-          value={newTask}
-          onChange={handleNewTaskText}
+          {...register('title')}
           placeholder="Adicione uma nova tarefa"
         />
         <button type="submit" /* disabled={isSubmitDisabled} */>
