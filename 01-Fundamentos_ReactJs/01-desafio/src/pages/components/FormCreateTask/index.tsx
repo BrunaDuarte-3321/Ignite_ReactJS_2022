@@ -1,5 +1,6 @@
+import { useReducer, useState } from 'react'
+import { useForm, SubmitHandler } from 'react-hook-form'
 import { PlusCircle, ClipboardText } from 'phosphor-react'
-import { ChangeEvent, FormEvent, useState } from 'react'
 import { Task } from '../Tasks'
 import {
   AccountContainer,
@@ -8,31 +9,29 @@ import {
   NoTaskContainer,
   NoTaskContentContainer,
 } from './styles'
+import { ITasks, taskReducer } from '../../../reducers/taskList'
 
 export const FormCreateTask = () => {
-  const [newTask, setNewTask] = useState<string>('')
-  const [tasks, setTasks] = useState<string[]>([])
+  const { register, handleSubmit, reset } = useForm<ITasks>()
+  const [tasks, dispatch] = useReducer(taskReducer, [])
   const [accountNewTask, setAccountNewTask] = useState<number>(0)
   const [accountFinishedTask, setAccountFinishedTask] = useState<number>(0)
 
-  const handleNewTaskText = (event: ChangeEvent<HTMLInputElement>) => {
-    event.target.setCustomValidity('')
-    setNewTask(event.target.value)
-  }
-
-  const handleCreateNewTask = (event: FormEvent) => {
-    event.preventDefault()
-    setTasks([...tasks, newTask])
-    setNewTask('')
+  const handleCreateTask: SubmitHandler<ITasks> = ({ id, title, finished }) => {
+    dispatch({
+      type: 'createTask',
+      payload: { id, title, finished: false },
+    })
+    reset()
     setAccountNewTask(tasks.length + 1)
   }
 
-  const deletContentTask = (contetTask: string) => {
-    const deletWithoutTaskOne = tasks.filter((deletTask) => {
-      return deletTask !== contetTask
+  const deletContentTask = (id: number) => {
+    dispatch({
+      type: 'deleteTask',
+      payload: { id },
     })
 
-    setTasks(deletWithoutTaskOne)
     setAccountNewTask(tasks.length - 1)
     accountFinishedTask === 0
       ? setAccountFinishedTask(0)
@@ -46,16 +45,14 @@ export const FormCreateTask = () => {
       setAccountFinishedTask(accountFinishedTask - 1)
     }
   }
-  /* const isSubmitDisabled = !task */
-
+  console.log(tasks, ' tasks')
   return (
     <FormCreateTaskContainer className="container">
-      <form action="" onSubmit={handleCreateNewTask}>
+      <form action="" onSubmit={handleSubmit(handleCreateTask)}>
         <input
           required
           type="text"
-          value={newTask}
-          onChange={handleNewTaskText}
+          {...register('title')}
           placeholder="Adicione uma nova tarefa"
         />
         <button type="submit" /* disabled={isSubmitDisabled} */>
@@ -83,7 +80,7 @@ export const FormCreateTask = () => {
           return (
             <Task
               handleAccountFinished={handleAccountFinished}
-              key={item}
+              key={item.id}
               task={item}
               deletContentTask={deletContentTask}
             />
