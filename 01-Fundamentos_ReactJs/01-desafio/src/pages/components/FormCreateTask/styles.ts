@@ -17,46 +17,6 @@ export const FormCreateTaskContainer = styled.div`
       width: auto;
     }
   }
-
-  input {
-    color: ${({ theme }) => theme.colors['base-gray-100']};
-    padding: 1rem;
-    background: ${({ theme }) => theme.colors['base-gray-500']};
-    border-radius: 8px;
-    width: 39.875rem;
-    height: 3.25rem;
-    @media (max-width: 768px) {
-      max-width: 25rem;
-    }
-    @media (max-width: 425px) {
-      width: auto;
-    }
-  }
-  input:default {
-    color: ${({ theme }) => theme.colors['base-gray-300']};
-  }
-
-  button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.5rem;
-    color: ${({ theme }) => theme.colors['base-gray-100']};
-    width: 5.625rem;
-    height: 3.25rem;
-    border-radius: 8px;
-    background: ${({ theme }) => theme.colors['blue-dark']};
-    cursor: pointer;
-    transition: 0.2s;
-
-    &:disabled {
-      opacity: 0.7;
-      cursor: not-allowed;
-    }
-    &:hover {
-      background: ${({ theme }) => theme.colors.blue};
-    }
-  }
 `
 type ColorsAccountTasks = {
   variant: 'blue' | 'purple'

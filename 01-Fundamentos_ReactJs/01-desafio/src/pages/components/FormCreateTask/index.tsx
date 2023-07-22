@@ -10,6 +10,8 @@ import {
   NoTaskContentContainer,
 } from './styles'
 import { ITasks, taskReducer } from '../../../reducers/taskList'
+import { Input } from '../../../components/Input'
+import Button from '../../../components/Button'
 
 export const FormCreateTask = () => {
   const { register, handleSubmit, reset } = useForm<ITasks>()
@@ -49,16 +51,13 @@ export const FormCreateTask = () => {
   return (
     <FormCreateTaskContainer className="container">
       <form action="" onSubmit={handleSubmit(handleCreateTask)}>
-        <input
+        <Input
           required
           type="text"
           {...register('title')}
           placeholder="Adicione uma nova tarefa"
         />
-        <button type="submit" /* disabled={isSubmitDisabled} */>
-          Criar
-          <PlusCircle size={16} />
-        </button>
+        <Button icon={<PlusCircle size={16} />} title="Criar" type="submit" />
       </form>
       <AccountTasksContainer>
         <AccountContainer variant="blue">
