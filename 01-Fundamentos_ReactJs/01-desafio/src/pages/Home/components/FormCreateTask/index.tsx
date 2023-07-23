@@ -10,9 +10,14 @@ import {
 import { taskReducer } from '../../../../reducers/taskList'
 import { Input } from '../../../../components/Input'
 import Button from '../../../../components/Button'
-import { HeaderTasks } from '../HeaderTasks'
 import { ITask } from '../../../../interfaces'
-import { createTaskAction, deleteTaskAction, toggleDoneAction } from './rules'
+import {
+  createTaskAction,
+  deleteTaskAction,
+  editeTaskAction,
+  toggleDoneAction,
+} from './rules'
+import { HeaderTasks } from '../AccountTask'
 
 export const FormCreateTask = () => {
   const { register, handleSubmit, reset } = useForm<ITask>()
@@ -22,14 +27,21 @@ export const FormCreateTask = () => {
     dispatch(createTaskAction(task))
     reset()
   }
+  const handleEditeTask = (id: number, newTask: string) => {
+    const task = tasks.find((task) => task.id === id)
+    if (!task) return false
+    const newText = window.prompt('Editar Tarefa', task.text)
+    if (!newText || newTask === '') return false
+    dispatch(editeTaskAction(id, newText))
+  }
+  const handleAccountFinished = (id: number) => {
+    dispatch(toggleDoneAction(id))
+  }
 
   const deleteContentTask = (id: number) => {
     dispatch(deleteTaskAction(id))
   }
 
-  const handleAccountFinished = (id: number) => {
-    dispatch(toggleDoneAction(id))
-  }
   return (
     <FormCreateTaskContainer className="container">
       <form action="" onSubmit={handleSubmit(handleCreateTask)}>
@@ -49,6 +61,7 @@ export const FormCreateTask = () => {
               handleAccountFinished={handleAccountFinished}
               key={task.id}
               task={task}
+              handleEditeTask={handleEditeTask}
               deleteContentTask={deleteContentTask}
             />
           )

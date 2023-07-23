@@ -1,24 +1,14 @@
 import styled from 'styled-components'
+
 export const TasksContainer = styled.section`
   width: 100%;
+  min-height: 2.5rem;
   margin-bottom: 1rem;
-  height: 4.5rem;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
+
   background: ${({ theme }) => theme.colors['base-gray-500']};
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.06);
   border-radius: 8px;
-`
-/* interface colorCheck {
-  variant: 'base-gray-100' | 'blue'
-} */
-export const BoxTaskContainer = styled.div`
-  margin-top: 1.12rem;
-  margin-left: 1rem;
   display: flex;
-  gap: 1rem;
-  justify-content: center;
 
   svg {
     color: ${({ theme }) => theme.colors.blue};
@@ -43,15 +33,39 @@ export const BoxTaskContainer = styled.div`
   }
 `
 
-export const ContentContainer = styled.div``
+export const BoxTaskContainer = styled.div`
+  overflow: auto;
+  width: 100%;
+  max-width: 46rem;
+  padding: 1rem;
+`
+
+export const HeaderTaskContainer = styled.header`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+`
+
+export const HeaderIconEdit = styled.div`
+  display: flex;
+  gap: 0.5rem;
+`
+
+export const HeaderTaskIconCircle = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+`
+
 export const TrashContainer = styled.div`
-  margin-top: 1.12rem;
-  margin-right: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  justify-content: center;
+
   width: 1.5rem;
   height: 1.5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
   transition: 0.2s;
   svg {
     cursor: pointer;
@@ -66,4 +80,14 @@ export const TrashContainer = styled.div`
     background: ${({ theme }) => theme.colors['base-gray-400']};
     border-radius: 4px;
   }
+`
+export const ContentContainer = styled.div`
+  word-break: break-all;
+  margin-right: 0.5rem;
+  flex: 1;
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+  text-decoration-line: strikethrough;
 `
