@@ -1,24 +1,18 @@
-type CreateTask = {
+import { ITask } from '../interfaces'
+
+interface ICreateTask {
   type: 'createTask'
-  payload: {
-    id: number
-    title: string
-    finished: boolean
-  }
+  payload: ITask
 }
-type DeleteTask = {
+
+interface IDeleteTask {
   type: 'deleteTask'
-  payload: {
-    id: number
-  }
+  payload: { id: number }
 }
 
-/* type FinishedTask = {
-  type: 'finishedTask'
-  payload: {
-    finished: boolean
-    completedTask: number
-  }
-} */
+interface IToggleDone {
+  type: 'toggleDone'
+  payload: { id: number }
+}
 
-export type ActionsTask = CreateTask | DeleteTask
+export type ActionsTask = ICreateTask | IDeleteTask | IToggleDone

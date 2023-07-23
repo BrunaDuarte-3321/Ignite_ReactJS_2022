@@ -1,4 +1,5 @@
 import { ActionsTask } from '../@types/list'
+import { ITask } from '../interfaces'
 
 export interface ITasks {
   id: number
@@ -6,17 +7,33 @@ export interface ITasks {
   finished: boolean
 }
 
-export const taskReducer = (tasks: ITasks[], action: ActionsTask) => {
+export const taskReducer = (tasks: ITask[], action: ActionsTask) => {
   switch (action.type) {
     case 'createTask':
       return [
         ...tasks,
         {
           id: tasks.length,
-          title: action.payload.title,
-          finished: action.payload.finished,
+          text: action.payload.text,
+          done: false,
         },
       ]
+
+    /* case 'editTask':
+      return tasks.map((task) => {
+        if (task.id === action.payload.id) {
+          task.text = action.payload.newTask
+        }
+        return task
+      }) */
+
+    case 'toggleDone':
+      return tasks.map((task) => {
+        if (task.id === action.payload.id) {
+          return { ...task, done: !task.done }
+        }
+        return task
+      })
 
     case 'deleteTask':
       return tasks.filter((task) => {
