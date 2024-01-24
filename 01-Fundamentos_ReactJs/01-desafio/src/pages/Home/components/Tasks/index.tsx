@@ -1,4 +1,5 @@
 import { Check, Circle, Pen, Trash } from 'phosphor-react'
+import { ITask } from '../../../../interfaces'
 import {
   BoxTaskContainer,
   ContentContainer,
@@ -8,7 +9,6 @@ import {
   TasksContainer,
   TrashContainer,
 } from './styles'
-import { ITask } from '../../../../interfaces'
 
 interface PropsCreatetasks {
   task: ITask
@@ -27,7 +27,6 @@ export const Task = ({
     deleteContentTask(id)
   }
 
-  console.log(task, 'tas do componente task')
   return (
     <TasksContainer>
       <BoxTaskContainer>
