@@ -1,5 +1,5 @@
 import { HeaderContainer } from './styles'
-import logoRocket from '../../assets/logo.svg'
+import logoRocket from '../../assets/Logo.png'
 export const Header = () => {
   return (
     <HeaderContainer>

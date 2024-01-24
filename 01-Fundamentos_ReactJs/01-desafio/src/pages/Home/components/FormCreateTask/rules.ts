@@ -11,6 +11,10 @@ export const deleteTaskAction = (id: number): ActionsTask => ({
   payload: { id },
 })
 
+export const editeTaskAction = (id: number, newTask: string): ActionsTask => ({
+  type: 'editeTask',
+  payload: { id, newTask },
+})
 export const toggleDoneAction = (id: number): ActionsTask => ({
   type: 'toggleDone',
   payload: { id },
