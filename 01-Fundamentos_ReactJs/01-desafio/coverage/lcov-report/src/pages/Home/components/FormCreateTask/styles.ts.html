@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/6</span>
+                <span class='fraction'>6/6</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/3</span>
+                <span class='fraction'>3/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/6</span>
+                <span class='fraction'>6/6</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -123,7 +123,7 @@
 <a name='L58'></a><a href='#L58'>58</a>
 <a name='L59'></a><a href='#L59'>59</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -142,8 +142,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -151,7 +151,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -159,8 +159,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -181,7 +181,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import styled from 'styled-components'
 &nbsp;
-export const FormCreateTaskContainer = <span class="cstat-no" title="statement not covered" >styled.div`</span>
+export const FormCreateTaskContainer = styled.div`
   form {
     margin: -1.625rem auto;
     display: flex;
@@ -200,8 +200,8 @@ export const FormCreateTaskContainer = <span class="cstat-no" title="statement n
   }
 `
 &nbsp;
-export const NoTaskContainer = <span class="cstat-no" title="statement not covered" >styled.div`</span>
-  border-top: solid 1px ${<span class="fstat-no" title="function not covered" >({</span> theme }) =&gt; <span class="cstat-no" title="statement not covered" >theme.colors['base-gray-400']}</span>;
+export const NoTaskContainer = styled.div`
+  border-top: solid 1px ${({ theme }) =&gt; theme.colors['base-gray-400']};
   margin-top: 1.562rem;
   border-radius: 5px;
 &nbsp;
@@ -209,7 +209,7 @@ export const NoTaskContainer = <span class="cstat-no" title="statement not cover
   justify-content: center;
 `
 &nbsp;
-export const NoTaskContentContainer = <span class="cstat-no" title="statement not covered" >styled.div`</span>
+export const NoTaskContentContainer = styled.div`
   margin-top: 4rem;
   display: flex;
   flex-direction: column;
@@ -217,8 +217,8 @@ export const NoTaskContentContainer = <span class="cstat-no" title="statement no
   align-items: center;
 &nbsp;
   p {
-    color: ${<span class="fstat-no" title="function not covered" >({</span> theme }) =&gt; <span class="cstat-no" title="statement not covered" >theme.colors['base-gray-300']}</span>;
-    font-size: ${<span class="fstat-no" title="function not covered" >({</span> theme }) =&gt; <span class="cstat-no" title="statement not covered" >theme.fontSize.xl}</span>;
+    color: ${({ theme }) =&gt; theme.colors['base-gray-300']};
+    font-size: ${({ theme }) =&gt; theme.fontSize.xl};
     line-height: 140%;
     font-weight: 700;
   }
@@ -244,7 +244,7 @@ export const NoTaskContentContainer = <span class="cstat-no" title="statement no
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-01-22T22:32:05.495Z
+                at 2024-01-24T23:50:30.952Z
             </div>
         <script src="../../../../../prettify.js"></script>
         <script>

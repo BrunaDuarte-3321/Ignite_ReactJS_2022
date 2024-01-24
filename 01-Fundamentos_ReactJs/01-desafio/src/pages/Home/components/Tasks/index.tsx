@@ -34,6 +34,7 @@ export const Task = ({
           <HeaderTaskIconCircle>
             {!task.done ? (
               <Circle
+                alt='concluir'
                 size={17.45}
                 onClick={() => handleAccountFinished(task.id)}
               />
