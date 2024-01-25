@@ -36,8 +36,8 @@ describe('FormCreateTask Component', () => {
     const input = screen.getByPlaceholderText('Adicione uma nova tarefa')
     const button = screen.getByRole('button', {name: 'Criar'})
 
-    userEvent.type(input, 'Nova tarefa');
-    userEvent.click(button);
+    userEvent.type(input, 'Nova tarefa')
+    userEvent.click(button)
   })
 
 })

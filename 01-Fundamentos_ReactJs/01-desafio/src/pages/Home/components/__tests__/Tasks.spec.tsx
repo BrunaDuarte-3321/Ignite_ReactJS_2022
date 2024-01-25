@@ -10,9 +10,9 @@ const setup = () => {
     done: false,
   };
 
-  const mockDeleteContentTask = jest.fn();
-  const mockHandleEditeTask = jest.fn();
-  const mockHandleAccountFinished = jest.fn();
+  const mockDeleteContentTask = jest.fn()
+  const mockHandleEditeTask = jest.fn()
+  const mockHandleAccountFinished = jest.fn()
 
   const view = render(
     <ThemeProvider theme={defaultTheme}>
@@ -36,15 +36,15 @@ const setup = () => {
 
 describe('Task Component', () => {
   it('renders task with default state', () => {
-    const { getByText, container, mockHandleAccountFinished, findAllByRole } = setup();
+    const { getByText, container, mockHandleAccountFinished, findAllByRole } = setup()
 
-  expect(getByText('Sample Task')).toBeDefined();
+  expect(getByText('Sample Task')).toBeDefined()
 
-  const circleIcon = findAllByRole('img', {name: 'concluir'});
-  expect(circleIcon).toBeDefined();
+  const circleIcon = findAllByRole('img', {name: 'concluir'})
+  expect(circleIcon).toBeDefined()
 
- /*  fireEvent.click(circleIcon!);
-  expect(mockHandleAccountFinished).toHaveBeenCalledWith(1); */
+ /*  fireEvent.click(circleIcon!)
+  expect(mockHandleAccountFinished).toHaveBeenCalledWith(1) */
 
   });
 
