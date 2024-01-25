@@ -1,6 +1,9 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
-export const ButtonContainer = styled.button`
+interface Props {
+  danger: boolean
+}
+export const ButtonContainer = styled.button<Props>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,4 +23,20 @@ export const ButtonContainer = styled.button`
   &:hover {
     background: ${({ theme }) => theme.colors.blue};
   }
+
+  ${({theme, danger }) => danger && css`
+    background: ${theme.colors.danger};
+    &:focus{
+      outline: transparent;
+      box-shadow: 0 0 0  2px ${({ theme }) => theme.colors['danger-dark']};
+    }
+
+    &:hover {
+      background: ${theme.colors['danger-light']};
+    }
+
+    &:active {
+      background: ${({theme}) =>theme.colors['danger-dark']};
+    }
+  `}
 `

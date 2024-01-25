@@ -1,4 +1,6 @@
 import { Check, Circle, Pen, Trash } from 'phosphor-react'
+import { useState } from 'react'
+import { Modal } from '../../../../components/Modal'
 import { ITask } from '../../../../interfaces'
 import {
   BoxTaskContainer,
@@ -10,9 +12,9 @@ import {
   TrashContainer,
 } from './styles'
 
-interface PropsCreatetasks {
+interface PropsCreateTasks {
   task: ITask
-  deleteContentTask: (contentDelet: number) => void
+  deleteContentTask: (contentDelete: number) => void
   handleEditeTask: (id: number, newTask: string) => void
   handleAccountFinished: (id: number) => void
 }
@@ -22,13 +24,20 @@ export const Task = ({
   deleteContentTask,
   handleAccountFinished,
   handleEditeTask,
-}: PropsCreatetasks) => {
+}: PropsCreateTasks) => {
+   const [isVisible, setIsVisible] = useState(false)
+
+   const handleModel = () => {
+    !isVisible ? setIsVisible(true) : setIsVisible(false)
+   }
   const handleDeleteTask = (id: number) => {
     deleteContentTask(id)
+    setIsVisible(false)
   }
 
   return (
     <TasksContainer>
+      
       <BoxTaskContainer>
         <HeaderTaskContainer>
           <HeaderTaskIconCircle>
@@ -61,11 +70,23 @@ export const Task = ({
               />
             </TrashContainer>
             <TrashContainer>
-              <Trash size={17.45} onClick={() => handleDeleteTask(task.id)} />
+              <Trash size={17.45} onClick={() => handleModel()} />
             </TrashContainer>
           </HeaderIconEdit>
         </HeaderTaskContainer>
       </BoxTaskContainer>
+      {isVisible && (
+          <Modal 
+          danger 
+          children={<p>{task.text}</p>} 
+          title={`Tem Certeza que deseja excluir a tarefa ${task.text}`}
+          cancelLabel='Cancelar'
+          confirmLabel='Confirmar'
+          deleteTask={() => handleDeleteTask(task.id)}
+          closedModal={() => isVisible ? setIsVisible(false) : null }
+        />
+      )}
+      
     </TasksContainer>
   )
 }

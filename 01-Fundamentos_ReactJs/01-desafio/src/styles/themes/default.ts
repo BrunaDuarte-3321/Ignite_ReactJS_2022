@@ -12,6 +12,8 @@ export const defaultTheme = {
     "base-gray-200": "#D9D9D9",
     "base-gray-100": "#F2F2F2",
     danger: "#E25858",
+    "danger-light": '#f97171',
+    "danger-dark": '#f63131'
   },
 
   fontSize: {

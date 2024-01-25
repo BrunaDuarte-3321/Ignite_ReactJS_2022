@@ -4,10 +4,11 @@ import { ButtonContainer } from './styles'
 interface PropsButton extends ButtonHTMLAttributes<HTMLButtonElement> {
   title: string
   icon?: ReactNode
+  danger?: boolean
 }
-export default function Button({ title, icon, ...props }: PropsButton) {
+export default function Button({ title, icon, danger=false, ...props }: PropsButton) {
   return (
-    <ButtonContainer {...props}>
+    <ButtonContainer {...props} danger={danger}>
       {icon}
       {title}
     </ButtonContainer>
