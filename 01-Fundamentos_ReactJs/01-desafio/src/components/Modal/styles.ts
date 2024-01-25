@@ -27,15 +27,15 @@ border-radius: 4px;
 padding: 24px;
 box-shadow: 0px 4px 10px rgba(0,0,0,0.4);
 
-h1 {
+> h1 {
   font-size: 22px;
   color: ${({theme, danger}) => (
     danger ? theme.colors.danger : theme.colors["base-gray-700"]
   )};
 }
 
-p {
-  margin-top: 8px;
+.modal-body {
+  margin-top: 32px;
 }
 
 `
@@ -46,11 +46,11 @@ export const FooterModal = styled.footer`
   align-content: center;
   justify-content: flex-end;
 
-  .cancel-button{
+  .cancel-button {
     background: transparent;
     border: none;
     font-size: 1rem;
-    margin-right: 0.5rem;
+    margin-right: 24px;
     color: green;
     cursor: pointer;
   }

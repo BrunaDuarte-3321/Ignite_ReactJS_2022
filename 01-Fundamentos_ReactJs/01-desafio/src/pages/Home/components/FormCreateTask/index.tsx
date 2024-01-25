@@ -51,7 +51,7 @@ export const FormCreateTask = () => {
           {...register('text')}
           placeholder="Adicione uma nova tarefa"
         />
-        <Button icon={<PlusCircle size={16} />} title="Criar" type="submit" />
+        <Button  icon={<PlusCircle size={16} />} title="Criar" type="submit" />
       </form>
       <HeaderTasks tasks={tasks} />
       {tasks.length > 0 ? (
