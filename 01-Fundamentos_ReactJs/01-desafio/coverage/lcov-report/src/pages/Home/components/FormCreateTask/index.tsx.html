@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">38.09% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/21</span>
+                <span class='fraction'>8/21</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">12.5% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/8</span>
+                <span class='fraction'>1/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">14.28% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/7</span>
+                <span class='fraction'>1/7</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">44.44% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/18</span>
+                <span class='fraction'>8/18</span>
             </div>
         
             
@@ -164,30 +164,30 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -244,30 +244,30 @@ import {
 } from './rules'
 import { HeaderTasks } from '../AccountTask'
 &nbsp;
-export const FormCreateTask = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-  const { register, handleSubmit, reset } = <span class="cstat-no" title="statement not covered" >useForm&lt;ITask&gt;()</span>
-  const [tasks, dispatch] = <span class="cstat-no" title="statement not covered" >useReducer(taskReducer, [])</span>
+export const FormCreateTask = () =&gt; {
+  const { register, handleSubmit, reset } = useForm&lt;ITask&gt;()
+  const [tasks, dispatch] = useReducer(taskReducer, [])
 &nbsp;
-  const handleCreateTask: SubmitHandler&lt;ITask&gt; = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(t</span>ask) =&gt; {</span>
+  const handleCreateTask: SubmitHandler&lt;ITask&gt; = <span class="fstat-no" title="function not covered" >(t</span>ask) =&gt; {
 <span class="cstat-no" title="statement not covered" >    dispatch(createTaskAction(task))</span>
 <span class="cstat-no" title="statement not covered" >    reset()</span>
   }
-  const handleEditeTask = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(i</span>d: number, newTask: string) =&gt; {</span>
+  const handleEditeTask = <span class="fstat-no" title="function not covered" >(i</span>d: number, newTask: string) =&gt; {
     const task = <span class="cstat-no" title="statement not covered" >tasks.find(<span class="fstat-no" title="function not covered" >(t</span>ask) =&gt; <span class="cstat-no" title="statement not covered" >task.id === id)</span></span>
 <span class="cstat-no" title="statement not covered" >    if (!task) <span class="cstat-no" title="statement not covered" >return false</span></span>
     const newText = <span class="cstat-no" title="statement not covered" >window.prompt('Editar Tarefa', task.text)</span>
 <span class="cstat-no" title="statement not covered" >    if (!newText || newTask === '') <span class="cstat-no" title="statement not covered" >return false</span></span>
 <span class="cstat-no" title="statement not covered" >    dispatch(editeTaskAction(id, newText))</span>
   }
-  const handleAccountFinished = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(i</span>d: number) =&gt; {</span>
+  const handleAccountFinished = <span class="fstat-no" title="function not covered" >(i</span>d: number) =&gt; {
 <span class="cstat-no" title="statement not covered" >    dispatch(toggleDoneAction(id))</span>
   }
 &nbsp;
-  const deleteContentTask = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(i</span>d: number) =&gt; {</span>
+  const deleteContentTask = <span class="fstat-no" title="function not covered" >(i</span>d: number) =&gt; {
 <span class="cstat-no" title="statement not covered" >    dispatch(deleteTaskAction(id))</span>
   }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return (</span>
+  return (
     &lt;FormCreateTaskContainer className="container"&gt;
       &lt;form action="" onSubmit={handleSubmit(handleCreateTask)}&gt;
         &lt;Input
@@ -280,7 +280,7 @@ export const FormCreateTask = <span class="cstat-no" title="statement not covere
       &lt;/form&gt;
       &lt;HeaderTasks tasks={tasks} /&gt;
       {tasks.length &gt; 0 ? (
-        tasks.map(<span class="fstat-no" title="function not covered" >(t</span>ask) =&gt; {
+<span class="branch-0 cbranch-no" title="branch not covered" >        tasks.map(<span class="fstat-no" title="function not covered" >(t</span>ask) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >          return (</span>
             &lt;Task
               handleAccountFinished={handleAccountFinished}
@@ -310,7 +310,7 @@ export const FormCreateTask = <span class="cstat-no" title="statement not covere
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-01-22T22:32:05.495Z
+                at 2024-01-24T23:50:30.952Z
             </div>
         <script src="../../../../../prettify.js"></script>
         <script>

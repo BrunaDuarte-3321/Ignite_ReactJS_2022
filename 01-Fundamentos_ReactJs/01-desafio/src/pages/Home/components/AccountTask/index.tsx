@@ -17,7 +17,7 @@ export const HeaderTasks = ({ tasks }: Props) => {
       </AccountContainer>
       <AccountContainer variant="purple">
         <p>
-          Concluídas
+          Concluídas 
           <span>
             {teste.length} de {tasks.length}
           </span>
