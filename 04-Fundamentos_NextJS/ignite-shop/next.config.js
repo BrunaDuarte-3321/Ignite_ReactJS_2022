@@ -5,6 +5,15 @@ module.exports = (phase, { defaultConfig }) => {
    */
   const nextConfig = {
     reactStrictMode: true,
+    images: {
+      remotePatterns: [
+        {
+          protocol: 'https',
+          hostname: 'files.stripe.com',
+          port: '',
+        },
+      ],
+    },
   }
 
   return nextConfig

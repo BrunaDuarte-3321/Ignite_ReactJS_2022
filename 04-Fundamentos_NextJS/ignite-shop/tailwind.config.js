@@ -20,7 +20,8 @@ module.exports = {
         /*  gradient: 'linear-gradient(45deg, red 0 50%, blue 50% 100%)', */
       },
       screens: {
-        customScreen: 'calc(100vw - ((100vw - 1180px) / 2))',
+        customW: 'calc(100vw - ((100vw - 1180px) / 2))',
+        customH: 'calc((656px) * - 0.5rem)',
       },
     },
   },
