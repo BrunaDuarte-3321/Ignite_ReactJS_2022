@@ -1,0 +1,7 @@
+{
+  "extends": [
+    /* "next/babel", */
+    "@rocketseat/eslint-config/react",
+    "next/core-web-vitals"
+  ]
+}
