@@ -6,7 +6,7 @@ import '../styles/global.css'
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <div className="flex flex-col items-start justify-center min-h-screen">
-      <header className="py-2 px-0 w-full max-w-[1180px]  m-auto">
+      <header className="py-8 px-0 w-full max-w-[1180px]  my-0 mx-auto">
         <Image src={logoImage} alt="logo ignite Shop" />
       </header>
       <Component {...pageProps} />

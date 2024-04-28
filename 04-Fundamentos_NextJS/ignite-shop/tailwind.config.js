@@ -17,6 +17,10 @@ module.exports = {
         gray100: '#e1e1e6',
         green500: '#00875f',
         green300: '#00b37e',
+        /*  gradient: 'linear-gradient(45deg, red 0 50%, blue 50% 100%)', */
+      },
+      screens: {
+        customScreen: 'calc(100vw - ((100vw - 1180px) / 2))',
       },
     },
   },
