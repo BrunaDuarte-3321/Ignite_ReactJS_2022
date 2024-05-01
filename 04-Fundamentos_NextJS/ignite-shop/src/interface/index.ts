@@ -16,5 +16,14 @@ export interface IProduct {
     url: string
     price: string
     description: string
+    defaultPriceId: string
+  }
+}
+
+export interface ISuccess {
+  customerName: string
+  product: {
+    name: string
+    imageUrl: string
   }
 }
